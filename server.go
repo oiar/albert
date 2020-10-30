@@ -13,9 +13,8 @@ type Message struct {
 
 type Store struct {
 	Items []string
+	mux sync.Mutex
 }
-
-var serviceMu sync.Mutex
 
 func (sto *Store) receiveMessage(w http.ResponseWriter, r *http.Request) {
 	var mes Message
@@ -26,6 +25,7 @@ func (sto *Store) receiveMessage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var res = make([]bool, len(mes.Content))
+	sto.mux.Lock()
 	for i := 0; i < len(mes.Content); i++ {
 		if isContain(sto.Items, mes.Content[i]) {
 			res[i] = true
@@ -33,6 +33,7 @@ func (sto *Store) receiveMessage(w http.ResponseWriter, r *http.Request) {
 		}
 		sto.Items = append(sto.Items, mes.Content[i])
 	}
+	sto.mux.Unlock()
 
 	err = json.NewEncoder(w).Encode(res)
 	if err != nil {
@@ -50,15 +51,12 @@ func isContain(items []string, item string) bool {
 }
 
 func StartServer() {
-	serviceMu.Lock()
-	defer serviceMu.Unlock()
-
 	s := &http.Server{
 		Addr: ":80",
 		Handler: nil,
 	}
 
-	sto := &Store{[]string{}}
+	sto := &Store{Items: []string{}}
 	http.HandleFunc("/send", sto.receiveMessage)
 
 	err := s.ListenAndServeTLS("./cert/localhost.crt", "./cert/localhost.key")
@@ -66,9 +64,3 @@ func StartServer() {
 		fmt.Println("ListenAndServeTLS", err)
 	}
 }
-
-//func main() {
-//	go func() {
-//		StartServer()
-//	}()
-//}

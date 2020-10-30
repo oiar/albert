@@ -53,11 +53,3 @@ func convertByte(data []byte) []bool {
 	}
 	return res
 }
-
-//func main() {
-//	con1 := []string{"one", "two", "three"}
-//	_, err := PostWithJson(con1)
-//	if err != nil {
-//		fmt.Println("Errors in mainPostWithJson:", err)
-//	}
-//}

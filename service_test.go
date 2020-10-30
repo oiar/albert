@@ -2,6 +2,7 @@ package albert
 
 import (
 	"testing"
+	"time"
 )
 
 func compare(res, response []bool) bool {
@@ -15,13 +16,11 @@ func compare(res, response []bool) bool {
 }
 
 func TestService(t *testing.T) {
-	//var m sync.Mutex
 	go func() {
-		//m.Lock()
 		StartServer()
-		//m.Unlock()
 	}()
 
+	time.Sleep(time.Second)
 	// request 1
 	con1 := []string{"one", "two", "three"}
 	response, err := PostWithJson(con1)
