@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c83ae420-782c-43ae-bed7-5e1235c7f19e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/albert.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/localhost.crt" beforeDir="false" afterPath="$PROJECT_DIR$/http/cert/localhost.crt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/localhost.csr" beforeDir="false" afterPath="$PROJECT_DIR$/http/cert/localhost.csr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert/localhost.key" beforeDir="false" afterPath="$PROJECT_DIR$/http/cert/localhost.key" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/http/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/http/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/http/service_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/http/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/reflect.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +40,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -62,5 +53,11 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="0" key="SettingsEditor" timestamp="1605174688823">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="0" y="0" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1605174688823" />
   </component>
 </project>
