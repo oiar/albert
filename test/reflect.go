@@ -13,7 +13,10 @@ type Foo struct {
 
 func (f *Foo) reflect() {
 	val := reflect.ValueOf(f).Elem()
+	val1 := reflect.ValueOf(f)
 
+	fmt.Println(val, "what is the val")
+	fmt.Println(val1, "what is the val1?")
 	for i := 0; i < val.NumField(); i++ {
 		valueField := val.Field(i)
 		typeField := val.Type().Field(i)
