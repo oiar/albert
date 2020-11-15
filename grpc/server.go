@@ -1,24 +1,37 @@
 package main
 
 import (
-	"fmt"
-	"sync"
-	"sync/atomic"
+	"context"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+	pb "google.golang.org/grpc/examples/helloworld/helloworld"
 )
 
-func main() {
-	var wg sync.WaitGroup
-	var total int64
-	sum := 0
-	for i := 1; i <= 10; i++ {
-		wg.Add(1)
-		sum += i
-		go func(i int) {
-			defer wg.Done()
-			atomic.AddInt64(&total, int64(i))
-		}(i)
-	}
-	wg.Wait()
+const (
+	port = ":50051"
+)
 
-	fmt.Printf("total:%d sum %d", total, sum)
+// server is used to implement helloworld.GreeterServer.
+type server struct {
+	pb.UnimplementedGreeterServer
+}
+
+// SayHello implements helloworld.GreeterServer
+func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	log.Printf("Received: %v", in.GetName())
+	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
+}
+
+func main() {
+	lis, err := net.Listen("tcp", port)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+	s := grpc.NewServer()
+	pb.RegisterGreeterServer(s, &server{})
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
 }
